@@ -9,7 +9,7 @@ m - n = g * (m1 - m2)
 gcd (m, n) = gcd(m-n, n)    this can be done more than once
 Use this to solve the question
 """
-
+# time: O(a) Space: O(1)
 def gcd(A,B):
     if A==0:
         return B
