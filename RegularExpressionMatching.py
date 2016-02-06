@@ -143,17 +143,20 @@ def isMatchUsingDP(s,p):
     #filling rest of the matrix
     for i in range(1,rows+1):
         for j in range(1,cols+1):
-            #if chars at p[j-1]==s[i-1] or p[j-1]=="." then matrix[i][j] should be same as matrix[i-1][j-1]
+            #if p[j-1] is not star
+                #if chars at p[j-1]==s[i-1] or p[j-1]=="." then matrix[i][j] should be same as matrix[i-1][j-1]
             if (p[j-1]==s[i-1] or p[j-1]==".") and matrix[i-1][j-1]:
                 matrix[i][j] = True
                 continue
-            #considering * to be zero i.e. matrix[i][j] should be equal to matrix[i][j-2]
+            #if p[j-1] is star
             if p[j-1]=="*" and j>1:
+                #considering * to be zero i.e. matrix[i][j] should be equal to matrix[i][j-2]
                 if matrix[i][j-2]:
                     matrix[i][j] = True
                     continue
-            #considering * to be one or more
-            if p[j-1]=='*' and j>1:
+                #considering * to be one or more
+                    #for that char having star should match the string s char and matrix[i-1][j] i.e. it should
+                    #also match the previos string versions
                 if (p[j-2]==s[i-1] or p[j-2]==".") and matrix[i-1][j]:
                     matrix[i][j] = True
                     continue
@@ -172,4 +175,5 @@ print isMatchUsingAutomata("aaa","a.a")
 print isMatchUsingAutomata("aaa","a*a")
 print isMatchUsingAutomata("aaa","aaaa")'''
 #print isMatchUsingAutomata("aaaaaaaaaaaaab","a*a*a*a*a*a*a*a*a*a*c")
-print isMatchUsingDP("aaaaaaaaaaaaab","a*a*a*a*a*a*a*a*a*a*c")
+#print isMatchUsingDP("aaaaaaaaaaaaab","a*a*a*a*a*a*a*a*a*a*c")
+print isMatchUsingDP("aaa","a*a")
