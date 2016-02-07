@@ -28,8 +28,10 @@ def threeSumClosest(A, B):
             if diff < minDiff:
                 minDiff = diff
                 ret = temp
-            if temp <= B:
+            if temp < B:
                 j += 1
             else:
                 k -= 1
     return ret
+
+print threeSumClosest([-1,2,1,-4],1)
