@@ -20,12 +20,20 @@ def encodeDecode(str):
     dp[1] = 1   #because single letter can be encoded in only one way.
 
     for i in range(2,len(dp)):
-        ways1 = dp[i-1]
-        couple = arr[i-2]+arr[i-1]
-        couple = int(couple)
-        ways2 = 0
-        if couple>0 and couple<27:
-            ways2 = dp[i-2]
+        if arr[i-1]=='0':   #if current number is zero then there is only one method viz to join it with previous
+                            #number ex: "101" we have to interpret it as 10,1
+            ways1 = 0
+        else:
+            ways1 = dp[i-1]
+        if arr[i-2]=='0':   #if the previous number is 0 then there is no use to couple it with current number
+                            #because 09 is equivalent to 9.
+            ways2 = 0
+        else:
+            couple = arr[i-2]+arr[i-1]
+            couple = int(couple)
+            ways2 = 0
+            if couple>0 and couple<27:
+                ways2 = dp[i-2]
         dp[i] = ways1 + ways2
 
     return dp[-1]
@@ -33,3 +41,4 @@ def encodeDecode(str):
 print encodeDecode("122222")
 print encodeDecode("123")
 print encodeDecode("899")
+print encodeDecode("101")
