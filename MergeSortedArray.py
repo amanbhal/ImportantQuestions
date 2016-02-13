@@ -30,7 +30,7 @@ def merge(A, m, B, n):
         else:
             A[m+n-1] = B[n-1]
             n -= 1
-
+    #special case when there are elements left in B when A is over
     while n>0:
         A[m+n-1] = B[n-1]
         n -= 1
