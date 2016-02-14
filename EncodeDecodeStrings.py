@@ -17,7 +17,10 @@ def encodeDecode(str):
     #dp[0] will be 1 because null string can be encoded in only one way.
     dp[0] = 1
 
-    dp[1] = 1   #because single letter can be encoded in only one way.
+    if arr[0]!='0':
+        dp[1] = 1   #because single letter can be encoded in only one way.
+    else:
+        dp[1] = 0
 
     for i in range(2,len(dp)):
         if arr[i-1]=='0':   #if current number is zero then there is only one method viz to join it with previous
@@ -42,3 +45,4 @@ print encodeDecode("122222")
 print encodeDecode("123")
 print encodeDecode("899")
 print encodeDecode("101")
+print encodeDecode("0")
