@@ -39,9 +39,14 @@ def firstMissingPositive(A):
             A[i] = -1
             i += 1
     #if we find -1 at position i then we return i+1
+    missing = 1
     for i in range(len(A)):
-        if A[i]<0:
-            return i+1
+        if A[i]!=missing:
+            return missing
+        else:
+            missing += 1
     #if all the numbers are in the range then we return the number which is just greater than the last number
     #example: [1,1,1] it will return 2
-    return A[-1]+1
+    return missing
+
+print firstMissingPositive([2,2])
