@@ -13,21 +13,12 @@ def lengthOfLongestSubstring2(s):
     #hash table is used to keep a track of the characters and the indexes
     hashTable = {}
     length = 0
-    i = 0
-    while i<len(s):
-        #if a character is already present then record the length till now and start from the next index
-        if s[i] in hashTable:
-            x = len(hashTable)
-            length = max(x,length)
-            index = hashTable[s[i]]
-            i = index+1
-            hashTable = {}
-        #if character is not present then add it to the hast table along with it's index
-        else:
-            hashTable[s[i]] = i
-            i += 1
-    x = len(hashTable)
-    length = max(x,length)
+    left = 0
+    for right in range(len(s)):
+        if s[right] in hashTable:
+            left = max(left,hashTable[s[right]]+1)
+        hashTable[s[right]] = right
+        length = max(length,right-left+1)
     return length
 
 
