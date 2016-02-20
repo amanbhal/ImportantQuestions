@@ -68,7 +68,7 @@ class Solution(object):
             prev = node
         return result
 
-    
+
     def zigzagLevelOrderTwoStack(self, root):
         """
         :type root: TreeNode
