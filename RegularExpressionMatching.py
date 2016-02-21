@@ -176,4 +176,4 @@ print isMatchUsingAutomata("aaa","a*a")
 print isMatchUsingAutomata("aaa","aaaa")'''
 #print isMatchUsingAutomata("aaaaaaaaaaaaab","a*a*a*a*a*a*a*a*a*a*c")
 #print isMatchUsingDP("aaaaaaaaaaaaab","a*a*a*a*a*a*a*a*a*a*c")
-print isMatchUsingDP("aaa","a*a")
+print isMatchUsingDP("aaaab","c*a*b")
