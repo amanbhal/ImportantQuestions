@@ -78,6 +78,7 @@ def printPath(parent,endWord):
 
 
 ##********BFS without graph*************************
+from collections import defaultdict
 def ladderLengthBFSwithoutGraph(beginWord, endWord, wordList):
     """
     :type beginWord: str
@@ -93,7 +94,12 @@ def ladderLengthBFSwithoutGraph(beginWord, endWord, wordList):
         return 0
     #applying bfs
     queue = [beginWord,None]
-    visited = []
+    #make a visited dictionary to make faster lookup
+    visited = defaultdict(int)
+    #make a dictionary from wordList to make faster lookup
+    wordListDictionary = defaultdict(int)
+    for i in wordList:
+        wordListDictionary[i] = 0
     count = 1
     while len(queue)!=0:
         word = queue.pop(0)
@@ -109,9 +115,9 @@ def ladderLengthBFSwithoutGraph(beginWord, endWord, wordList):
                     temp = "".join(chars)
                     if temp==endWord:
                         return count+1
-                    if temp in wordList and temp not in visited:
+                    if temp in wordListDictionary and temp not in visited:
                         queue.append(temp)
-                        visited.append(temp)
+                        visited[temp] = 0
     return 0
 
 #ladderLength("hit","cog",["hot","dot","hit","dog","lot","cog","log"])
