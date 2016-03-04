@@ -1,4 +1,6 @@
+"""
 
+"""
 #=> Method1
 #=> for each word in words find another word that has no common char. multiply their lengths and compare to global
 #   maxProduct.
